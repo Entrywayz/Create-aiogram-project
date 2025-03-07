@@ -1,15 +1,9 @@
-#!/bin/bash
-
-# Запрос пути к папке проекта
 read -p "Введите путь к папке, где будет лежать проект (например, C:/Users/Desktop/): " path_to_project
 
-# Переход в указанную папку
 cd "$path_to_project" || { echo "Не удалось перейти в указанную папку"; exit 1; }
 
-# Запрос названия проекта
 read -p "Назовите свой проект: " project_name
 
-# Создание папки проекта
 if [ ! -d "$project_name" ]; then
     mkdir "$project_name"
 else
@@ -17,17 +11,13 @@ else
     exit 1
 fi
 
-# Переход в папку проекта
 cd "$project_name" || { echo "Не удалось перейти в папку проекта"; exit 1; }
 
-# Создание виртуального окружения
 python -m venv .venv || { echo "Ошибка при создании виртуального окружения"; exit 1; }
 
-# Активация виртуального окружения и установка пакетов
 source .venv/bin/activate || { echo "Ошибка при активации виртуального окружения"; exit 1; }
 pip install aiogram pydantic_settings pydantic || { echo "Ошибка при установке пакетов"; exit 1; }
 
-# Создание папок и файлов
 mkdir -p handlers keyboards
 
 cat > bot.py <<EOF
