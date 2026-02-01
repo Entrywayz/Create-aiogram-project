@@ -4,7 +4,7 @@
 
 bash
 Copy
-git clone https://github.com/ваш-username/название-репозитория.git
+git clone https://github.com/Entrywayz/Create-aiogram-project
 cd название-репозитория
 2. Создание виртуального окружения
 Создайте виртуальное окружение и активируйте его:
